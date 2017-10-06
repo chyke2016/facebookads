@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail?page=1 -->
+<html class="" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1.1">
+<meta name="description" content="Hi Awesome People I wan to upload PDF or Doc file through form and send the same file to a mail or for now i just want to upload the file to database,...">
+<meta property="og:site_name" content="Laracasts">
+<meta property="fb:app_id" content="511211375738022">
+<title> How to Upload PDF, Doc file using form and send the file to a mail
+</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://laracasts.com/favicons/apple-touch-icon.png?v=XBrbNbbRQ4">
+<link rel="icon" type="image/png" href="https://laracasts.com/favicons/favicon-32x32.png?v=XBrbNbbRQ4" sizes="32x32">
+<link rel="icon" type="image/png" href="https://laracasts.com/favicons/favicon-16x16.png?v=XBrbNbbRQ4" sizes="16x16">
+<link rel="manifest" href="https://laracasts.com/favicons/manifest.json?v=XBrbNbbRQ4">
+<link rel="mask-icon" href="https://laracasts.com/favicons/safari-pinned-tab.svg?v=XBrbNbbRQ4" color="#4fb6b5">
+<link rel="shortcut icon" href="https://laracasts.com/favicons/favicon.ico?v=XBrbNbbRQ4">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml?v=XBrbNbbRQ4">
+<meta name="theme-color" content="#4fb6b5">
+<link rel="alternate" type="application/atom+xml" title="Laracasts" href="https://laracasts.com/feed">
+<link rel="stylesheet" href="./How to Upload PDF, Doc file using form and send the file to a mail_files/fonts.css">
+<link href="./How to Upload PDF, Doc file using form and send the file to a mail_files/css" rel="stylesheet">
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/analytics.js.download"></script><script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/wow.min.js.download"></script>
+<script>new WOW({ mobile: false }).init();</script>
+<link href="./How to Upload PDF, Doc file using form and send the file to a mail_files/min.css" rel="stylesheet">
+<script>
+            window.LARACASTS = {"signedIn":false,"csrfToken":"0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF","stripeKey":"pk_live_42cAcd2OvCDs4hpErd5ZscBT","user":null};
+        </script>
+<link rel="stylesheet" href="./How to Upload PDF, Doc file using form and send the file to a mail_files/rainbow.css">
+</head>
+<body class="forum-discussion guest ">
+<script id="flash-template" type="text/template">
+    <div class="notification is-primary for-user">
+        <a href="#" class="notification-body inherits-color" target="_blank" rel="noreferrer noopener"></a>
+    </div>
+</script>
+<div id="root" class="page "><div><nav class="nav is-normal"><div class="container"><div class="nav-left dont-flex mr-2"><a href="https://laracasts.com/" class="nav-item is-brand"><svg id="white-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792.51 102.4"><path d="M103.08,445.39v65.52h35.74v13.42H87V445.39Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M191.63,445.39h14.7l34.18,78.93H223l-7.07-17.09H182.05L175,524.33H157.45Zm7.4,20.87-11.52,27.5h22.88Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M285.3,491.87h-7.85v32.45H261.37V445.39h36a23.65,23.65,0,0,1,17.26,6.9,23.17,23.17,0,0,1,7,17.31q0,9.85-6.9,15.64a30.93,30.93,0,0,1-12.36,5.84l22.15,33.23H305Zm-7.85-33.06v21.76h16.42a10.65,10.65,0,0,0,10.8-11,10.24,10.24,0,0,0-3.15-7.79,10.72,10.72,0,0,0-7.65-3Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M374.58,445.39h14.7l34.18,78.93H405.91l-7.07-17.09H365l-7.07,17.09H340.4Zm7.4,20.87-11.52,27.5h22.88Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M500.09,471.17a24.2,24.2,0,0,0-3.67-4.84q-7.07-7.24-18.09-7.24t-18.09,7.24q-7,7.18-7,18.65t7,18.68q7,7.21,18,7.21t18.09-7.24a23.49,23.49,0,0,0,3.67-4.9L515,505.46a38.79,38.79,0,0,1-6.79,8.74q-11.8,11.52-29.78,11.52t-29.92-11.55q-11.94-11.55-11.94-29.2t11.94-29.28q11.94-11.63,29.92-11.63T508,455.86a38.8,38.8,0,0,1,6.79,8.57Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M677.73,444a44.48,44.48,0,0,1,29.11,10.35l-9.46,11.41a28.39,28.39,0,0,0-9.24-5.59,30.16,30.16,0,0,0-10.24-1.75q-6.12,0-9.63,2.67a6.49,6.49,0,0,0-2.56,5.29,6.56,6.56,0,0,0,3.28,5.68q2.56,1.73,12.41,4.51,11.63,3,17.31,6.57,10,6.63,10,18.43,0,10.8-9.35,17.92-8.46,6.24-21.49,6.23a46.6,46.6,0,0,1-33-13l9-11.47a36.24,36.24,0,0,0,10.3,7.07,29.9,29.9,0,0,0,13.64,3.28q6.68,0,10.58-2.84a8.35,8.35,0,0,0,3.51-6.62,7.28,7.28,0,0,0-3.56-6.29q-2.62-1.78-12.13-4.45-12.19-3.51-17.14-6.4-10.3-6.07-10.3-17.59A20.53,20.53,0,0,1,657,450.46Q665.21,444,677.73,444Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M730.16,445.39h64.13v13.3h-24v65.63H754.09V458.7H730.16Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M848.49,444a44.47,44.47,0,0,1,29.11,10.35l-9.46,11.41a28.36,28.36,0,0,0-9.24-5.59,30.16,30.16,0,0,0-10.24-1.75q-6.12,0-9.63,2.67a6.49,6.49,0,0,0-2.56,5.29,6.56,6.56,0,0,0,3.29,5.68q2.56,1.73,12.41,4.51,11.63,3,17.31,6.57,10,6.63,10,18.43,0,10.8-9.35,17.92-8.46,6.24-21.49,6.23a46.6,46.6,0,0,1-33-13l9-11.47a36.23,36.23,0,0,0,10.3,7.07,29.91,29.91,0,0,0,13.64,3.28q6.68,0,10.58-2.84a8.35,8.35,0,0,0,3.51-6.62,7.28,7.28,0,0,0-3.56-6.29Q856.56,494,847,491.37q-12.19-3.51-17.14-6.4-10.3-6.07-10.3-17.59a20.53,20.53,0,0,1,8.18-16.92Q836,444,848.49,444Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path> <path id="arrow" fill="#00b1b2" d="M549.44,537.66V504.75h12v13.78L621,489.74a29.75,29.75,0,0,0,4.21-2.31,15.41,15.41,0,0,0-1.36-.88l-62.42-31.73v19.93h-12V435.26L629.58,476c2.95,1.62,9.73,6.09,9,12.45-.68,6.09-8.18,10.27-12.67,12.24l-76.49,37Z" transform="translate(-86.99 -435.26)"></path><path d="M579.77,499H535a4.08,4.08,0,1,1,0-8.16h44.75a4.08,4.08,0,1,1,0,8.16Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M525.91,499h-8.23a4.08,4.08,0,1,1,0-8.16h8.23a4.08,4.08,0,1,1,0,8.16Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M544.14,488.13h-8.23a4.08,4.08,0,0,1,0-8.16h8.23a4.08,4.08,0,1,1,0,8.16Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path><path d="M596.19,488.14H553.44a4.08,4.08,0,1,1,0-8.16h42.75a4.08,4.08,0,0,1,0,8.16Z" transform="translate(-86.99 -435.26)" class="svg-logo-white"></path></svg></a></div> <div class="nav-center flex mr-2"><form method="GET" action="https://laracasts.com/discuss" class="nav-search-form is-flex"><svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="is-hidden-mobile" style="width: 30px;"><title>search</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="search-icon" fill="#cacaca"><path d="M11.1921711,12.6063847 C10.0235906,13.4815965 8.5723351,14 7,14 C3.13400675,14 0,10.8659932 0,7 C0,3.13400675 3.13400675,0 7,0 C10.8659932,0 14,3.13400675 14,7 C14,8.5723351 13.4815965,10.0235906 12.6063847,11.1921711 L14.0162265,12.6020129 C14.6819842,12.4223519 15.4217116,12.5932845 15.9484049,13.1199778 L18.7795171,15.95109 C19.5598243,16.7313971 19.5646685,17.9916807 18.7781746,18.7781746 C17.997126,19.5592232 16.736965,19.5653921 15.95109,18.7795171 L13.1199778,15.9484049 C12.5960188,15.4244459 12.4217025,14.6840739 12.6018353,14.0160489 L11.1921711,12.6063847 Z M7,12 C9.76142375,12 12,9.76142375 12,7 C12,4.23857625 9.76142375,2 7,2 C4.23857625,2 2,4.23857625 2,7 C2,9.76142375 4.23857625,12 7,12 Z"></path></g></g></svg> <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="search" class="input aa-hint" readonly="" aria-hidden="true" autocomplete="off" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="search" class="input aa-input aa-hint" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-labelledby="search" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="vertical-align: top; position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0px 0px / auto repeat scroll padding-box border-box transparent;" readonly="" aria-hidden="true" tabindex="-1"><input type="search" id="search" placeholder="SEARCH THE FORUM" name="q" class="input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-labelledby="search" aria-owns="algolia-autocomplete-listbox-2" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Gotham SSm A&quot;, &quot;Gotham SSm B&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: 1px; text-indent: 10px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-2" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;"><div class="aa-dataset-3"></div></span></span><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Gotham SSm A&quot;, &quot;Gotham SSm B&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: 1px; text-indent: 10px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;"><div class="aa-dataset-1"></div></span></span> <button type="submit" class="button is-primary in-caps is-hidden-mobile">
+        Search
+    </button></form></div> <span class="nav-toggle"><span></span> <span></span> <span></span></span> <div class="nav-right nav-menu"><a href="https://laracasts.com/join" class="nav-item is-bold in-caps">
+Sign Up
+</a> <a href="https://laracasts.com/login" class="nav-item is-bold color-primary in-caps">
+Sign In
+</a></div></div></nav> <nav class="nav-bottom "><div class="container"><ul class="is-flex-tablet nav-menu"><li class="is-hidden-tablet"><form method="GET" action="https://laracasts.com/discuss" class="nav-search-form is-flex"><svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="is-hidden-mobile" style="width: 30px;"><title>search</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="search-icon" fill="#cacaca"><path d="M11.1921711,12.6063847 C10.0235906,13.4815965 8.5723351,14 7,14 C3.13400675,14 0,10.8659932 0,7 C0,3.13400675 3.13400675,0 7,0 C10.8659932,0 14,3.13400675 14,7 C14,8.5723351 13.4815965,10.0235906 12.6063847,11.1921711 L14.0162265,12.6020129 C14.6819842,12.4223519 15.4217116,12.5932845 15.9484049,13.1199778 L18.7795171,15.95109 C19.5598243,16.7313971 19.5646685,17.9916807 18.7781746,18.7781746 C17.997126,19.5592232 16.736965,19.5653921 15.95109,18.7795171 L13.1199778,15.9484049 C12.5960188,15.4244459 12.4217025,14.6840739 12.6018353,14.0160489 L11.1921711,12.6063847 Z M7,12 C9.76142375,12 12,9.76142375 12,7 C12,4.23857625 9.76142375,2 7,2 C4.23857625,2 2,4.23857625 2,7 C2,9.76142375 4.23857625,12 7,12 Z"></path></g></g></svg> <input type="search" id="search" placeholder="SEARCH THE FORUM" name="q" class="input"> <button type="submit" class="button is-primary in-caps is-hidden-mobile">
+        Search
+    </button></form></li> <li class="is-hidden-tablet"><a href="https://laracasts.com/login" class="nav-bottom-link"><span class="nav-bottom-title">Sign In</span></a></li> <li class="is-hidden-tablet"><a href="https://laracasts.com/join" class="nav-bottom-link"><span class="nav-bottom-title">Sign Up</span></a></li> <li><a href="https://laracasts.com/lessons" class="nav-bottom-link "><span class="icon icon-catalog"></span> <span class="nav-bottom-title">Catalog</span></a></li> <li><a href="https://laracasts.com/series?curated" class="nav-bottom-link "><span class="icon icon-series"></span> <span class="nav-bottom-title">Series</span></a></li> <li><div class="dropdown w-100"><div class="is-vertically-centered"> <button class="button has-dropdown w-100"><span href="#" class="has-arrow nav-bottom-link "><span class="icon icon-skills"></span> <span class="nav-bottom-title">Skills</span></span></button></div> <div class="dropdown-menu" style="min-width: 250px;"><ul><li class="dropdown-item"><a href="https://laracasts.com/skills/php" class=" is-flex"><span class="flex">PHP</span> <span class="is-circle icon" style="color: rgb(136, 147, 189);"></span></a></li> <li class="dropdown-item"><a href="https://laracasts.com/skills/laravel" class=" is-flex"><span class="flex">Laravel</span> <span class="is-circle icon" style="color: rgb(237, 108, 99);"></span></a></li> <li class="dropdown-item"><a href="https://laracasts.com/skills/testing" class=" is-flex"><span class="flex">Testing</span> <span class="is-circle icon" style="color: rgb(144, 206, 148);"></span></a></li> <li class="dropdown-item"><a href="https://laracasts.com/skills/javascript" class=" is-flex"><span class="flex">Front-End</span> <span class="is-circle icon" style="color: rgb(171, 170, 67);"></span></a></li> <li class="dropdown-item"><a href="https://laracasts.com/skills/tooling" class=" is-flex"><span class="flex">Tooling</span> <span class="is-circle icon" style="color: rgb(239, 103, 51);"></span></a></li></ul></div></div></li> <li><a href="https://laracasts.com/shop" class="nav-bottom-link "><span class="icon icon-apparel"></span> <span class="nav-bottom-title">Apparel</span></a></li> <li class="active is-active"><a href="https://laracasts.com/discuss" class="nav-bottom-link active is-active"><span class="icon icon-discuss"></span> <span class="nav-bottom-title">Discussions</span></a></li></ul></div></nav> <div class="wrapper"><div class="section"><div class="container filterable"><div class="columns"><aside class="forum-sidebar menu column is-3"><a href="https://laracasts.com/signup?billing=none&amp;title=You%27ll%20be%20posting%20on%20the%20forum%20in%20no%20time!" class="button is-default is-primary w-100 mb-1">
+Create Account
+</a> <p class="menu-label">
+Choose a Filter
+</p> <ul class="menu-list"><li><a href="https://laracasts.com/discuss" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" class="icon is-success"><path d="M7 1C3.14 1 0 4.14 0 8s3.14 7 7 7c.48 0 .94-.05 1.38-.14-.17-.08-.2-.73-.02-1.09.19-.41.81-1.45.2-1.8-.61-.35-.44-.5-.81-.91-.37-.41-.22-.47-.25-.58-.08-.34.36-.89.39-.94.02-.06.02-.27 0-.33 0-.08-.27-.22-.34-.23-.06 0-.11.11-.2.13-.09.02-.5-.25-.59-.33-.09-.08-.14-.23-.27-.34-.13-.13-.14-.03-.33-.11s-.8-.31-1.28-.48c-.48-.19-.52-.47-.52-.66-.02-.2-.3-.47-.42-.67-.14-.2-.16-.47-.2-.41-.04.06.25.78.2.81-.05.02-.16-.2-.3-.38-.14-.19.14-.09-.3-.95s.14-1.3.17-1.75c.03-.45.38.17.19-.13-.19-.3 0-.89-.14-1.11-.13-.22-.88.25-.88.25.02-.22.69-.58 1.16-.92.47-.34.78-.06 1.16.05.39.13.41.09.28-.05-.13-.13.06-.17.36-.13.28.05.38.41.83.36.47-.03.05.09.11.22s-.06.11-.38.3c-.3.2.02.22.55.61s.38-.25.31-.55c-.07-.3.39-.06.39-.06.33.22.27.02.5.08.23.06.91.64.91.64-.83.44-.31.48-.17.59.14.11-.28.3-.28.3-.17-.17-.19.02-.3.08-.11.06-.02.22-.02.22-.56.09-.44.69-.42.83 0 .14-.38.36-.47.58-.09.2.25.64.06.66-.19.03-.34-.66-1.31-.41-.3.08-.94.41-.59 1.08.36.69.92-.19 1.11-.09.19.1-.06.53-.02.55.04.02.53.02.56.61.03.59.77.53.92.55.17 0 .7-.44.77-.45.06-.03.38-.28 1.03.09.66.36.98.31 1.2.47.22.16.08.47.28.58.2.11 1.06-.03 1.28.31.22.34-.88 2.09-1.22 2.28-.34.19-.48.64-.84.92s-.81.64-1.27.91c-.41.23-.47.66-.66.8 3.14-.7 5.48-3.5 5.48-6.84 0-3.86-3.14-7-7-7L7 1zm1.64 6.56c-.09.03-.28.22-.78-.08-.48-.3-.81-.23-.86-.28 0 0-.05-.11.17-.14.44-.05.98.41 1.11.41.13 0 .19-.13.41-.05.22.08.05.13-.05.14zM6.34 1.7c-.05-.03.03-.08.09-.14.03-.03.02-.11.05-.14.11-.11.61-.25.52.03-.11.27-.58.3-.66.25zm1.23.89c-.19-.02-.58-.05-.52-.14.3-.28-.09-.38-.34-.38-.25-.02-.34-.16-.22-.19.12-.03.61.02.7.08.08.06.52.25.55.38.02.13 0 .25-.17.25zm1.47-.05c-.14.09-.83-.41-.95-.52-.56-.48-.89-.31-1-.41-.11-.1-.08-.19.11-.34.19-.15.69.06 1 .09.3.03.66.27.66.55.02.25.33.5.19.63h-.01z"></path></svg>
+All Threads
+</a></li> <li><a href="https://laracasts.com/discuss?trending=1" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="icon is-success"><path d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg>
+Popular This Week
+</a></li> <li><a href="https://laracasts.com/discuss?popular=1" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="icon is-success"><path d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg>
+Popular All Time
+</a></li> <li><a href="https://laracasts.com/discuss?answered=1" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="icon is-success"><path d="M14 14c-.05.69-1.27 1-2 1H5.67L4 14V8c1.36 0 2.11-.75 3.13-1.88 1.23-1.36 1.14-2.56.88-4.13-.08-.5.5-1 1-1 .83 0 2 2.73 2 4l-.02 1.03c0 .69.33.97 1.02.97h2c.63 0 .98.36 1 1l-1 6L14 14zm0-8h-2.02l.02-.98C12 3.72 10.83 0 9 0c-.58 0-1.17.3-1.56.77-.36.41-.5.91-.42 1.41.25 1.48.28 2.28-.63 3.28-1 1.09-1.48 1.55-2.39 1.55H2C.94 7 0 7.94 0 9v4c0 1.06.94 2 2 2h1.72l1.44.86c.16.09.33.14.52.14h6.33c1.13 0 2.84-.5 3-1.88l.98-5.95c.02-.08.02-.14.02-.2-.03-1.17-.84-1.97-2-1.97H14z"></path></svg>
+Solved
+</a></li> <li><a href="https://laracasts.com/discuss?answered=0" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="icon is-success"><path d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg>
+Unsolved
+</a></li> <li><a href="https://laracasts.com/discuss?fresh=1" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="icon is-success"><path d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg>
+No Replies Yet
+</a></li> <li><a href="https://laracasts.com/discuss/leaderboard" class=" has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="icon is-success"><path d="M12 13c0 .59 0 1-.59 1H4.59C4 14 4 13.59 4 13c0-.59 0-1 .59-1h6.81c.59 0 .59.41.59 1H12zM4.59 4h6.81c.59 0 .59-.41.59-1 0-.59 0-1-.59-1H4.59C4 2 4 2.41 4 3c0 .59 0 1 .59 1zm6.81 3H4.59C4 7 4 7.41 4 8c0 .59 0 1 .59 1h6.81c.59 0 .59-.41.59-1 0-.59 0-1-.59-1zM2 1h-.72c-.3.19-.58.25-1.03.34V2H1v2.14H.16V5H3v-.86H2V1zm.25 8.13c-.17 0-.45.03-.66.06.53-.56 1.14-1.25 1.14-1.89C2.71 6.52 2.17 6 1.37 6c-.59 0-.97.2-1.38.64l.58.58c.19-.19.38-.38.64-.38.28 0 .48.16.48.52 0 .53-.77 1.2-1.7 2.06V10h3l-.09-.88h-.66l.01.01zm-.08 3.78v-.03c.44-.19.64-.47.64-.86 0-.7-.56-1.11-1.44-1.11-.48 0-.89.19-1.28.52l.55.64c.25-.2.44-.31.69-.31.27 0 .42.13.42.36 0 .27-.2.44-.86.44v.75c.83 0 .98.17.98.47 0 .25-.23.38-.58.38-.28 0-.56-.14-.81-.38l-.48.66c.3.36.77.56 1.41.56.83 0 1.53-.41 1.53-1.16 0-.5-.31-.81-.77-.94v.01z"></path></svg>
+Leaderboard
+</a></li></ul> <p class="menu-label mt-4">
+Or Pick a Channel
+</p> <ul class="menu-list"><li class=" "><a href="https://laracasts.com/discuss"><span class="is-circle icon" style="color: black;"></span>
+All
+</a></li> <li><a href="https://laracasts.com/discuss/channels/code-review" class=" has-icon"><span class="is-circle icon" style="color: rgb(140, 211, 98);"></span>
+Code Review
+</a></li> <li><a href="https://laracasts.com/discuss/channels/elixir" class=" has-icon"><span class="is-circle icon" style="color: rgb(247, 201, 83);"></span>
+Elixir
+</a></li> <li><a href="https://laracasts.com/discuss/channels/eloquent" class=" has-icon"><span class="is-circle icon" style="color: rgb(9, 215, 193);"></span>
+Eloquent
+</a></li> <li><a href="https://laracasts.com/discuss/channels/envoyer" class=" has-icon"><span class="is-circle icon" style="color: rgb(245, 104, 87);"></span>
+Envoyer
+</a></li> <li><a href="https://laracasts.com/discuss/channels/forge" class=" has-icon"><span class="is-circle icon" style="color: rgb(93, 179, 183);"></span>
+Forge
+</a></li> <li><a href="https://laracasts.com/discuss/channels/general-discussion" class=" has-icon"><span class="is-circle icon" style="color: rgb(78, 137, 218);"></span>
+General
+</a></li> <li><a href="https://laracasts.com/discuss/channels/guides" class=" has-icon"><span class="is-circle icon" style="color: rgb(213, 30, 34);"></span>
+Guides
+</a></li> <li><a href="https://laracasts.com/discuss/channels/javascript" class=" has-icon"><span class="is-circle icon" style="color: rgb(154, 212, 224);"></span>
+JavaScript
+</a></li> <li><a href="https://laracasts.com/discuss/channels/laravel" class=" has-icon"><span class="is-circle icon" style="color: rgb(245, 104, 87);"></span>
+Laravel
+</a></li> <li><a href="https://laracasts.com/discuss/channels/lumen" class=" has-icon"><span class="is-circle icon" style="color: rgb(249, 169, 122);"></span>
+Lumen
+</a></li> <li><a href="https://laracasts.com/discuss/channels/requests" class=" has-icon"><span class="is-circle icon" style="color: rgb(187, 130, 78);"></span>
+Requests
+</a></li> <li><a href="https://laracasts.com/discuss/channels/servers" class=" has-icon"><span class="is-circle icon" style="color: rgb(249, 169, 122);"></span>
+Servers
+</a></li> <li><a href="https://laracasts.com/discuss/channels/site-improvements" class=" has-icon"><span class="is-circle icon" style="color: rgb(136, 173, 72);"></span>
+Site Feedback
+</a></li> <li><a href="https://laracasts.com/discuss/channels/spark" class=" has-icon"><span class="is-circle icon" style="color: rgb(102, 173, 211);"></span>
+Spark
+</a></li> <li><a href="https://laracasts.com/discuss/channels/testing" class=" has-icon"><span class="is-circle icon" style="color: rgb(218, 87, 87);"></span>
+Testing
+</a></li> <li><a href="https://laracasts.com/discuss/channels/tips" class=" has-icon"><span class="is-circle icon" style="color: rgb(131, 126, 182);"></span>
+Tips
+</a></li> <li><a href="https://laracasts.com/discuss/channels/vue" class=" has-icon"><span class="is-circle icon" style="color: rgb(58, 185, 129);"></span>
+Vue
+</a></li></ul></aside> <div class="column is-9 primary"><div class="pr-100-desktop"><h1 class="title is-normal is-3 mbb-1">How to Upload PDF, Doc file using form and send the file to a mail</h1> <p class="fs-smaller mb-1-mobile"><strong class="color-text-lightest in-caps"><span class="is-hidden-mobile">Published 1 year ago</span>
+by <a href="https://laracasts.com/@MrRobot21">MrRobot21</a></strong></p> <div class="columns"><div class="column"><div class="forum-question mt-1"><div class="content user-content"><p>Hi Awesome People</p> <p>I wan to upload PDF or Doc file through form and send the same file to a mail or for now i just want to upload the file to database, i really don't know how to achieve it,</p> <p>I Created a file called "view/careers/apply.blade.php" there is a form with 3 input fields, i can post the name and email to database to with the help of <a href="https://laracasts.com/@tykus_ikus">@tykus_ikus</a> (he really helped me a lot) but i don't know how to upload files</p> <pre><code class="hljs javascript">&lt;form method=<span class="hljs-string">"POST"</span> action=<span class="hljs-string">"apply"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"form-horizontal custm-form"</span> role=<span class="hljs-string">"form"</span>&gt;
+{!! csrf_field() !!}
+    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"modal-header"</span>&gt;
+    <span class="xml"><span class="hljs-comment">&lt;!--&lt;button type="button" class="close" data-dismiss="modal" aria-label="Close"&gt;
+            &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
+        &lt;/button&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-title"</span>&gt;</span>Apply Online<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"modal-body"</span>&gt;
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"control-label col-md-3"</span>&gt;</span>Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter Your Name"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"control-label col-md-3"</span>&gt;</span>E-mail:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter email"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-3 control-label"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"resume"</span>&gt;</span>Attach Resume:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"resume"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Resume"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"resume"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">""</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"required"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'spnFileError'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                                
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"modal-footer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-xs-5"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin:0;text-align:left;color: green;display:none;"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"successMsg"</span>&gt;</span>Submitted Successfully!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btnUpload"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custm-btn btn-primary"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"uploadFile();"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custm-btn btn-default"</span> <span class="hljs-attr">data-dismiss</span>=<span class="hljs-string">"modal"</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</span></code></pre> <p>My Model IS "AvoCareer.php"</p> <pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> 
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AvoCareer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+    <span class="hljs-keyword">protected</span> $table = <span class="hljs-string">"avo_career"</span>;
+}
+
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre> <p>My Controller is "AvoCareersController.php"</p> <pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> 
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">AvoCareer</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Redirect</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Controller</span> <span class="hljs-title">as</span> <span class="hljs-title">BaseController</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AvoCareersController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">careerpage</span><span class="hljs-params">()</span> </span>{
+
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'careers.apply'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+
+        $avoCareer = <span class="hljs-keyword">new</span> AvoCareer;
+        $avoCareer-&gt;name = $request-&gt;name;
+        $avoCareer-&gt;email = $request-&gt;email;
+        $avoCareer-&gt;resume = $request-&gt;resume;
+        $avoCareer-&gt;save();
+
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">'apply'</span>);
+    
+    }
+
+}
+
+
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre> <p>And The rought is</p> <pre><code class="hljs php">Route::get(<span class="hljs-string">'apply'</span>, <span class="hljs-string">'AvoCareersController@careerpage'</span>);
+Route::post(<span class="hljs-string">'apply'</span>, <span class="hljs-string">'AvoCareersController@store'</span>);
+</code></pre> <p>Looking forward for Much needed help</p> <p>Thanks</p></div> <div data-wow-delay=".3s" class="mt-2 is-answer wow fadeIn" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;"><div class="best-answer-panel"><h5 class="title is-5 is-vertically-centered mb-0"><span class="flex">Best Answer</span> <small class="is-hidden-mobile">
+(As Selected By MrRobot21)
+</small></h5> <div class="best-answer-reply-wrap box is-rounded"><div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@Frankiec91"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/e39472484a3f3f379bf89dda9daea308" alt="Frankiec91" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><a href="https://laracasts.com/@Frankiec91">Frankiec91</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164043" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@MrRobot21">@MrRobot21</a> please add enctype="multipart/form-data" in form tag.</p> <pre><code class="hljs javascript">&lt;form method=<span class="hljs-string">"POST"</span> action=<span class="hljs-string">"apply"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"form-horizontal custm-form"</span> role=<span class="hljs-string">"form"</span> enctype=<span class="hljs-string">"multipart/form-data"</span>&gt;
+</code></pre></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel//replies/164043"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">@MrRobot21 please add enctype="multipart/form-data" in form tag.
+```
+&lt;form method="POST" action="apply" class="form-horizontal custm-form" role="form" enctype="multipart/form-data"&gt;
+```</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div></div></div></div></div> <div data-wow-delay=".5s" class="wow fadeIn" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;"><div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@bobbybouwmann"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/27023728a22ac6d6a38342c1c1b2cb6e" alt="bobbybouwmann" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><i title="Apeldoorn, The Netherlands" class="flag flag-nl is-hidden-mobile"></i> <a href="https://laracasts.com/@bobbybouwmann">bobbybouwmann</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164007" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(881,845 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p>What did you try? I can show you how it's done, but you don't learn anything from that!</p> <p>Take a look at this article: <a href="http://www.easylaravelbook.com/blog/2015/04/08/processing-file-uploads-with-laravel-5/" target="_blank">http://www.easylaravelbook.com/blog/2015/04/08/processing-file-uploads-with-laravel-5/</a></p></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164007"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">What did you try? I can show you how it's done, but you don't learn anything from that! 
+
+Take a look at this article: http://www.easylaravelbook.com/blog/2015/04/08/processing-file-uploads-with-laravel-5/</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@MrRobot21"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/be8c7b8008f26bea5cfdcc53a98336f1" alt="MrRobot21" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><a href="https://laracasts.com/@MrRobot21">MrRobot21</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164025" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(9,530 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@bobbybouwmann">@bobbybouwmann</a> Thank you very much for your response</p> <p>I have gone through the article you mentioned it's done using laravel form i don't no much about that</p> <p>anyway i tried this in my controller "AvoCareersController.php"</p> <pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> 
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">AvoCareer</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Redirect</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Controller</span> <span class="hljs-title">as</span> <span class="hljs-title">BaseController</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AvoCareersController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">careerpage</span><span class="hljs-params">()</span> </span>{
+
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'careers.apply'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+
+        $avoCareer = <span class="hljs-keyword">new</span> AvoCareer;
+        $avoCareer-&gt;name = $request-&gt;name;
+        $avoCareer-&gt;email = $request-&gt;email;
+        $avoCareer-&gt;resume = $request-&gt;resume;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . <span class="hljs-string">'.'</span> . 
+        $request-&gt;file(<span class="hljs-string">'pdf'</span>)-&gt;getClientOriginalExtension();
+
+        $request-&gt;file(<span class="hljs-string">'pdf'</span>)-&gt;move(
+            base_path() . <span class="hljs-string">'/public/uploads'</span>, $fileName
+        );
+
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">'apply'</span>);
+    
+    }
+
+}
+
+
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre> <p>I am getting the following error,</p> <pre><code class="hljs javascript">FatalErrorException <span class="hljs-keyword">in</span> AvoCareersController.php line <span class="hljs-number">28</span>:
+Call to a member <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClientOriginalExtension</span>(<span class="hljs-params"></span>) <span class="hljs-title">on</span> <span class="hljs-title">a</span> <span class="hljs-title">non</span>-<span class="hljs-title">object</span>
+</span></code></pre> <p>i am sorry if my questions are silly i am very very new to laravel and backend development i am a core frontend developer so..</p> <p>Thank you</p></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164025"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required"> @bobbybouwmann  Thank you very much for your response 
+
+I have gone through the article you mentioned it's done using laravel form i don't no much about that 
+ 
+anyway i tried this in my controller "AvoCareersController.php"
+
+```
+&lt;?php 
+
+namespace App\Http\Controllers;
+
+use View;
+use App\AvoCareer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Routing\Controller as BaseController;
+
+class AvoCareersController extends BaseController {
+
+	public function careerpage() {
+
+		return view('careers.apply');
+	}
+
+    public function store(Request $request)
+    {
+
+        $avoCareer = new AvoCareer;
+        $avoCareer-&gt;name = $request-&gt;name;
+        $avoCareer-&gt;email = $request-&gt;email;
+        $avoCareer-&gt;resume = $request-&gt;resume;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . '.' . 
+        $request-&gt;file('pdf')-&gt;getClientOriginalExtension();
+
+        $request-&gt;file('pdf')-&gt;move(
+            base_path() . '/public/uploads', $fileName
+        );
+
+        return redirect('apply');
+    
+    }
+
+}
+
+
+?&gt;
+```
+
+I am getting the following error, 
+
+```
+FatalErrorException in AvoCareersController.php line 28:
+Call to a member function getClientOriginalExtension() on a non-object
+```
+
+i am sorry if my questions are silly i am very very new to laravel and backend development i am a core frontend developer so..
+
+Thank you</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@Frankiec91"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/e39472484a3f3f379bf89dda9daea308" alt="Frankiec91" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><i title="Petaling Jaya" class="flag flag-my is-hidden-mobile"></i> <a href="https://laracasts.com/@Frankiec91">Frankiec91</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164039" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(1,365 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p>Your upload file is 'resume' instead of 'pdf'</p> <pre><code class="hljs php">$request-&gt;file(<span class="hljs-string">'pdf'</span>) to $request-&gt;file(<span class="hljs-string">'resume'</span>)
+</code></pre></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164039"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">Your upload file is 'resume' instead of 'pdf'
+```
+$request-&gt;file('pdf') to $request-&gt;file('resume')
+```</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@MrRobot21"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/be8c7b8008f26bea5cfdcc53a98336f1" alt="MrRobot21" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><a href="https://laracasts.com/@MrRobot21">MrRobot21</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164041" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(9,530 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p>Hi <a href="https://laracasts.com/@Frankiec91">@Frankiec91</a> Thanks, but</p> <pre><code class="hljs php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+
+        $avoCareer = <span class="hljs-keyword">new</span> AvoCareer;
+        $avoCareer-&gt;name = $request-&gt;name;
+        $avoCareer-&gt;email = $request-&gt;email;
+        $avoCareer-&gt;resume = $request-&gt;resume;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . <span class="hljs-string">'.'</span> . 
+        $request-&gt;file(<span class="hljs-string">'resume'</span>)-&gt;getClientOriginalExtension();
+
+        $request-&gt;file(<span class="hljs-string">'resume'</span>)-&gt;move(
+            base_path() . <span class="hljs-string">'/public/uploads'</span>, $fileName
+        );
+
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">'apply'</span>);
+    
+    }
+</code></pre> <p>I am still getting this error</p> <pre><code class="hljs javascript">FatalErrorException <span class="hljs-keyword">in</span> AvoCareersController.php line <span class="hljs-number">28</span>:
+Call to a member <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClientOriginalExtension</span>(<span class="hljs-params"></span>) <span class="hljs-title">on</span> <span class="hljs-title">a</span> <span class="hljs-title">non</span>-<span class="hljs-title">object</span>
+</span></code></pre></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164041"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">Hi  @Frankiec91  Thanks, but  
+
+```
+    public function store(Request $request)
+    {
+
+        $avoCareer = new AvoCareer;
+        $avoCareer-&gt;name = $request-&gt;name;
+        $avoCareer-&gt;email = $request-&gt;email;
+        $avoCareer-&gt;resume = $request-&gt;resume;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . '.' . 
+        $request-&gt;file('resume')-&gt;getClientOriginalExtension();
+
+        $request-&gt;file('resume')-&gt;move(
+            base_path() . '/public/uploads', $fileName
+        );
+
+        return redirect('apply');
+    
+    }
+```
+
+I am still getting this error 
+
+```
+FatalErrorException in AvoCareersController.php line 28:
+Call to a member function getClientOriginalExtension() on a non-object
+```</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@Frankiec91"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/e39472484a3f3f379bf89dda9daea308" alt="Frankiec91" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><i title="Petaling Jaya" class="flag flag-my is-hidden-mobile"></i> <a href="https://laracasts.com/@Frankiec91">Frankiec91</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164043" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(1,365 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@MrRobot21">@MrRobot21</a> please add enctype="multipart/form-data" in form tag.</p> <pre><code class="hljs javascript">&lt;form method=<span class="hljs-string">"POST"</span> action=<span class="hljs-string">"apply"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"form-horizontal custm-form"</span> role=<span class="hljs-string">"form"</span> enctype=<span class="hljs-string">"multipart/form-data"</span>&gt;
+</code></pre></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164043"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">@MrRobot21 please add enctype="multipart/form-data" in form tag.
+```
+&lt;form method="POST" action="apply" class="form-horizontal custm-form" role="form" enctype="multipart/form-data"&gt;
+```</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+ Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@MrRobot21"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/be8c7b8008f26bea5cfdcc53a98336f1" alt="MrRobot21" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><a href="https://laracasts.com/@MrRobot21">MrRobot21</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164046" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(9,530 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@Frankiec91">@Frankiec91</a> Wow Thank you so much it's working, You are super cool</p> <p>but i have a small problem i guess</p> <p>The file is uploading into the "public/uploads/" which is super cool</p> <p>The link in the database is not as expected, The table name is "avo_career" and the column name is "resume" and</p> <p>The path of the file storing is</p> <pre><code class="hljs css"><span class="hljs-selector-tag">C</span>:\<span class="hljs-selector-tag">wamp</span>\<span class="hljs-selector-tag">tmp</span>\<span class="hljs-selector-tag">php11A6</span><span class="hljs-selector-class">.tmp</span>
+</code></pre> <p>It Should be as following right</p> <pre><code class="hljs php"><span class="hljs-keyword">public</span>/uploads/fiename.pdf
+</code></pre> <p>Thanks</p></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164046"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required"> @Frankiec91  Wow Thank you so much it's working, You are super cool
+
+but i have a small problem i guess 
+
+The file is uploading into the "public/uploads/" which is super cool 
+
+The link in the database is not as expected, The table name is  "avo_career" and the column name is "resume" and 
+
+The path of the file storing is 
+
+```
+C:\wamp\tmp\php11A6.tmp
+```
+
+It Should be as following right
+
+```
+public/uploads/fiename.pdf
+```
+Thanks</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@Frankiec91"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/e39472484a3f3f379bf89dda9daea308" alt="Frankiec91" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><i title="Petaling Jaya" class="flag flag-my is-hidden-mobile"></i> <a href="https://laracasts.com/@Frankiec91">Frankiec91</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164301" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(1,365 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@MrRobot21">@MrRobot21</a> try echo base_path() and check.</p></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164301"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">@MrRobot21 try echo base_path() and check.</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@rephluX"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/75e7946b03d3f2933f2c14e36a159bc3" alt="rephluX" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><i title="Cologne (Germany)" class="flag flag-de is-hidden-mobile"></i> <a href="https://laracasts.com/@rephluX">rephluX</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164311" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(49,715 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p>You have to set the column value to the new filename value as well:</p> <pre><code class="hljs php"><span class="hljs-comment">// ...</span>
+$avoCareer-&gt;resume = $fileName;
+$avoCareer-&gt;save();
+</code></pre></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164311"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required">You have to set the column value to the new filename value as well:
+
+```
+// ...
+$avoCareer-&gt;resume = $fileName;
+$avoCareer-&gt;save();
+```</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div> <div data-reply="" class="reply "><div class="media"><figure class="reply-avatar media-left pr-1"><span class="image is-75x75 mb-1"><a href="https://laracasts.com/@MrRobot21"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/be8c7b8008f26bea5cfdcc53a98336f1" alt="MrRobot21" width="75" class="is-circle is-outlined bg-white"></a></span></figure> <div class="media-content" style="min-width: 0px;"><div class="is-flex mb-1"><h5 class="pbr-1 is-bold"><a href="https://laracasts.com/@MrRobot21">MrRobot21</a></h5> <a href="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164369" class="color-text-lightest is-hidden-mobile mbr-1">
+1 year ago
+</a> <span title="The higher the experience, the more trustworthy the user." class="color-success flex is-hidden-mobile">
+(9,530 XP)
+</span></div> <div data-reply-body="" class="content user-content"><div><p><a href="https://laracasts.com/@rephluX">@rephluX</a> , <a href="https://laracasts.com/@Frankiec91">@Frankiec91</a> Thank you for your relpy</p> <p>i tried but the path storing in the table is the same, column name is "resume_link"</p> <pre><code class="hljs css"><span class="hljs-selector-tag">C</span>:\<span class="hljs-selector-tag">wamp</span>\<span class="hljs-selector-tag">tmp</span>\<span class="hljs-selector-tag">php4D5F</span><span class="hljs-selector-class">.tmp</span>
+</code></pre> <p>And My Controller is "AvoCareersController.php"</p> <pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> 
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">AvoCareer</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Redirect</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Controller</span> <span class="hljs-title">as</span> <span class="hljs-title">BaseController</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AvoCareersController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">careerpage</span><span class="hljs-params">()</span> </span>{
+
+        <span class="hljs-keyword">return</span> view(<span class="hljs-string">'careers.apply'</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+
+        $avoCareer = <span class="hljs-keyword">new</span> AvoCareer;
+        $avoCareer-&gt;position     = $request-&gt;position;
+        $avoCareer-&gt;name         = $request-&gt;name;
+        $avoCareer-&gt;email        = $request-&gt;email;
+        $avoCareer-&gt;contact_num  = $request-&gt;contact_num;
+        $avoCareer-&gt;current_city = $request-&gt;current_city;
+        $avoCareer-&gt;year         = $request-&gt;year;
+        $avoCareer-&gt;month        = $request-&gt;month;
+        $avoCareer-&gt;location     = $request-&gt;location;
+        $avoCareer-&gt;resume_link  = $request-&gt;resume_link;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . <span class="hljs-string">'.'</span> .
+        $request-&gt;file(<span class="hljs-string">'resume_link'</span>)-&gt;getClientOriginalExtension();
+
+        $request-&gt;file(<span class="hljs-string">'resume_link'</span>)-&gt;move(
+            base_path() . <span class="hljs-string">'/public/uploads'</span>, $fileName
+        );
+     
+        $avoCareer-&gt;resume_link  = $fileName;
+        
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">'apply'</span>);
+    
+    }
+
+}
+
+
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre> <p>Thank You</p></div></div> <div class="reply-markdown-body" style="display: none;"><form method="POST" action="https://laracasts.com/discuss/channels/laravel/how-to-upload-pdf-doc-file-using-form-and-send-the-file-to-a-mail/replies/164369"><input type="hidden" name="_method" value="PATCH"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><textarea name="body_in_markdown" placeholder="Ask Away" class="textarea" required="required"> @rephluX ,  @Frankiec91   Thank you for your relpy
+
+i tried but the path storing in the table is the same, column name is "resume_link"
+
+```
+C:\wamp\tmp\php4D5F.tmp
+```
+
+And My Controller is "AvoCareersController.php"
+
+```
+&lt;?php 
+
+namespace App\Http\Controllers;
+
+use View;
+use App\AvoCareer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Routing\Controller as BaseController;
+
+class AvoCareersController extends BaseController {
+
+	public function careerpage() {
+
+		return view('careers.apply');
+	}
+
+    public function store(Request $request)
+    {
+
+        $avoCareer = new AvoCareer;
+        $avoCareer-&gt;position     = $request-&gt;position;
+        $avoCareer-&gt;name         = $request-&gt;name;
+        $avoCareer-&gt;email        = $request-&gt;email;
+        $avoCareer-&gt;contact_num  = $request-&gt;contact_num;
+        $avoCareer-&gt;current_city = $request-&gt;current_city;
+        $avoCareer-&gt;year         = $request-&gt;year;
+        $avoCareer-&gt;month        = $request-&gt;month;
+        $avoCareer-&gt;location     = $request-&gt;location;
+        $avoCareer-&gt;resume_link  = $request-&gt;resume_link;
+        $avoCareer-&gt;save();
+
+        $fileName = $avoCareer-&gt;id . '.' .
+        $request-&gt;file('resume_link')-&gt;getClientOriginalExtension();
+
+        $request-&gt;file('resume_link')-&gt;move(
+            base_path() . '/public/uploads', $fileName
+        );
+     
+        $avoCareer-&gt;resume_link  = $fileName;
+        
+        return redirect('apply');
+    
+    }
+
+}
+
+
+?&gt;
+```
+
+Thank You</textarea></div> <div><button type="button" class="button is-muted mbr-1 is-outlined mb-1-mobile">
+Cancel
+</button> <button type="submit" class="button is-primary is-outlined">
+Update Your Reply
+</button></div></form></div> <footer class="is-vertically-centered reply-edit-links"></footer></div></div></div></div> <p class="has-text-centered mt-3"><a href="https://laracasts.com/login">
+Sign In
+</a> or
+<a href="https://laracasts.com/signup?billing=none&amp;plan=none&amp;title=Okay,%20we%27ll%20have%20you%20posting%20on%20the%20forum%20in%20no%20time!">
+create a forum account to participate in this discussion.</a></p></div></div></div></div></div></div></div> <aside class="section is-grey is-medium"><div class="container"><div class="columns"><div class="column px-5-tablet"><div class="centered-heading"><h3 class="heading">
+Trending <strong class="color-success">Laravel</strong> Discussions
+</h3> <p class="subtitle">
+Below, you'll find the most popular Laracasts discussion threads
+in your currently chosen channel.
+</p></div> <div class="conversation-list is-condensed 
+                                  columns is-multiline"><div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@jerauf"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/21e25dc15364b7252e97f38ab66afce1" alt="jerauf" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/uploading-large-dimension-files">
+Uploading large dimension files
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/uploading-large-dimension-files?page=3#reply-367492" class="inherits-color is-link">2 days ago</a></span>
+by <a href="https://laracasts.com/@Waldemar">Waldemar</a></div> <div class="content">
+Is there a setting to limit the px dimensions of an uploaded file?
+I'm using spatie Laravel Media Library. They say that there's no setting<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+35
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@Flex"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/5f060ef8312b551444081f2b9d00666f" alt="Flex" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/how-to-show-table-data-regarding-to-id">
+how to show table data regarding to id
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/how-to-show-table-data-regarding-to-id?page=2#reply-367112" class="inherits-color is-link">3 days ago</a></span>
+by <a href="https://laracasts.com/@IgorBabko">IgorBabko</a></div> <div class="content">
+hi, I am developing project management app using Laravel. in my application I have project and one project have many tasks and one task have many c<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+18
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@salomon022"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/a565f4a7b0f2f149a69465f135e1cfc3" alt="salomon022" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/laravel-beautymail">
+laravel beautymail
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/laravel-beautymail?page=2#reply-367310" class="inherits-color is-link">1 day ago</a></span>
+by <a href="https://laracasts.com/@salomon022">salomon022</a></div> <div class="content">
+please help me
+"message": "Class App\Http\Controllers\Snowfire\Beautymail\Beautymail does not exist", "file"<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+17
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><a href="https://laracasts.com/@chriz74"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/37e6b08e9d5610a468c7dfa788791242" alt="chriz74" width="75" class="is-circle is-outlined bg-white"></a></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/display-error-through-ajax-if-action-is-not-authorized-in-laravel-51">
+display error through ajax if action is not authorized in laravel 5.1
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/display-error-through-ajax-if-action-is-not-authorized-in-laravel-51?page=2#reply-367567" class="inherits-color is-link">2 days ago</a></span>
+by <a href="https://laracasts.com/@chriz74">chriz74</a></div> <div class="content">
+ in the docs for 5.1 we can read:
+If the action is authorized, the controller will continue executing normally; however, if the authorize me<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+15
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@Wizix"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/07f9eb0488ec30004027c201b7a1cafb" alt="Wizix" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/403-forbidden-on-only-one-page">
+403 Forbidden on only one page
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/403-forbidden-on-only-one-page?page=1#reply-366866" class="inherits-color is-link">5 days ago</a></span>
+by <a href="https://laracasts.com/@Wizix">Wizix</a></div> <div class="content">
+Hello guys!
+I'm getting an error 403 Forbidden on only one page of my website :<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+13
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@aminbaig"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/c9facfcf47dc9aea63ebfcbbeb4f6937" alt="aminbaig" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/using-where-clause-in-controller">
+Using where clause in controller
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/using-where-clause-in-controller?page=1#reply-367586" class="inherits-color is-link">1 day ago</a></span>
+by <a href="https://laracasts.com/@ChristophHarms">ChristophHarms</a></div> <div class="content">
+Hi,
+I am trying to load all the products which are not currently ordered by the user. Here is the code for my index method:<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+13
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@sam0081"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/350cd0d48c1af9e4c8b125cf1d9b1dc6" alt="sam0081" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/regarding-exception-handling">
+Regarding Exception handling
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/regarding-exception-handling?page=1#reply-366889" class="inherits-color is-link">5 days ago</a></span>
+by <a href="https://laracasts.com/@sam0081">sam0081</a></div> <div class="content">
+Route::post('user','contrller@method');
+I defined post route and i am trying that route from get.. after that i am getting method not allowed error<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+12
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@jgravois"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/438b6ab6502df43954022cb402b4c523" alt="jgravois" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/so-very-very-lost-in-a-polymorphic-relationship">
+So Very, Very Lost in a Polymorphic Relationship
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/so-very-very-lost-in-a-polymorphic-relationship?page=1#reply-366350" class="inherits-color is-link">1 week ago</a></span>
+by <a href="https://laracasts.com/@jgravois">jgravois</a></div> <div class="content">
+This is my very first attempt at a polymorphic relationship (I followed this lesson: [<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+11
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@hecate0211"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/f0be077d2ca71bacbccaa45ded0567d3" alt="hecate0211" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/how-to-send-array-from-script-to-controler">
+how to send array from script to controler
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/how-to-send-array-from-script-to-controler?page=1#reply-366991" class="inherits-color is-link">4 days ago</a></span>
+by <a href="https://laracasts.com/@Dry7">Dry7</a></div> <div class="content">
+i want to send my array to controller, but i idont understand how to send it
+this is my view
+&lt;button class="btn btn<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+11
+</div></div> <div class="conversation-list-item column is-6"><div class="conversation-list-avatar is-hidden-mobile"><div><span class="icon is-answered"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" class="icon is-32x32"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z" fill="white"></path></svg> <a href="https://laracasts.com/@realtebo"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/13ac92a723e01487c1e6052d2c318353" alt="realtebo" width="75" class="is-circle is-outlined bg-white"></a></span></div></div> <div class="conversation-list-title"><h4 class="title is-5"><a href="https://laracasts.com/discuss/channels/laravel/why-a-not-nullable-field-with-a-default-value-create-a-sql-exception">
+Why a not-nullable field with a default value create a sql exception?
+</a></h4> <div class="meta in-caps mb-1"><span><a href="https://laracasts.com/discuss/channels/laravel" class="is-link" style="color: rgb(245, 104, 87);">Laravel</a> •
+<a href="https://laracasts.com/discuss/channels/laravel/why-a-not-nullable-field-with-a-default-value-create-a-sql-exception?page=1#reply-367352" class="inherits-color is-link">2 days ago</a></span>
+by <a href="https://laracasts.com/@sutherland">sutherland</a></div> <div class="content">
+I created this field with a migration
+$table-&gt;string('company_name')-&gt;default('');
+I was expecting NOT NULLAB<span class="is-muted">...</span></div></div> <div class="conversation-list-reply-count is-hidden-mobile">
+11
+</div></div></div></div></div></div></aside></div> <section class="signup-banner is-vertically-centered has-text-centered-mobile"><div class="container"><div class="columns"><div class="column is-4 is-offset-8"><h3 class="heading color-white wow fadeIn" style="visibility: hidden; animation-name: none;">
+The most concise screencasts for the
+working developer, updated daily.
+</h3> <a href="https://laracasts.com/join" data-wow-delay=".5s" class="button is-default wow fadeIn" style="visibility: hidden; animation-delay: 0.5s; animation-name: none;">
+Get Started
+</a></div></div></div></section> <section class="footer-section top"><div class="container"><div class="columns"><div data-wow-delay=".5s" class="column is-5 wow fadeIn" style="visibility: hidden; animation-delay: 0.5s; animation-name: none;"><h2 class="newsletter-heading pr-1-tablet has-text-centered-mobile">
+Want us to email you occasionally with Laracasts news?
+</h2></div> <div class="column is-6 is-offset-1"><form id="newsletter-form" method="POST" action="https://laracasts.com/newsletters/subscribe"><div class="newsletter-signup control has-addons wow lightSpeedIn" style="visibility: hidden; animation-name: none;"><input type="email" name="email" placeholder="Enter Your Email" autocomplete="off" required="required" class="input"> <button type="submit" class="button is-outlined is-primary">
+            Subscribe
+        </button></div></form></div></div></div></section> <section class="footer-section bottom"><footer class="container"><div class="columns mb-3"><div class="column is-5"><h2 class="mb-3"><img src="./How to Upload PDF, Doc file using form and send the file to a mail_files/logo-footer.png" alt="Laracasts" width="350" height="44.92"></h2> <p class="footer-description is-heavy mb-3">
+Lots of your peers think Laracasts is one of the best things ever.
+So buy Jeffrey lunch once a month, see for yourself, and massively
+level up your skills in the process.
+</p> <ul class="is-inline-flex w-100 is-justified-to-center-mobile"><li><a href="http://facebook.com/laracasts" target="_blank"><span class="icon is-outlined o-4"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 167.657 167.657" xml:space="preserve"><g><path d="M83.829,0.349C37.532,0.349,0,37.881,0,84.178c0,41.523,30.222,75.911,69.848,82.57v-65.081H49.626   v-23.42h20.222V60.978c0-20.037,12.238-30.956,30.115-30.956c8.562,0,15.92,0.638,18.056,0.919v20.944l-12.399,0.006   c-9.72,0-11.594,4.618-11.594,11.397v14.947h23.193l-3.025,23.42H94.026v65.653c41.476-5.048,73.631-40.312,73.631-83.154   C167.657,37.881,130.125,0.349,83.829,0.349z"></path></g></svg></span></a></li> <li><a href="http://twitter.com/laracasts" target="_blank"><span class="icon is-outlined is-vertically-centered is-justified-to-center bg-black o-4"><svg viewBox="0 0 2000 1625.36" width="22" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="m 1999.9999,192.4 c -73.58,32.64 -152.67,54.69 -235.66,64.61 84.7,-50.78 149.77,-131.19 180.41,-227.01 -79.29,47.03 -167.1,81.17 -260.57,99.57 C 1609.3399,49.82 1502.6999,0 1384.6799,0 c -226.6,0 -410.328,183.71 -410.328,410.31 0,32.16 3.628,63.48 10.625,93.51 -341.016,-17.11 -643.368,-180.47 -845.739,-428.72 -35.324,60.6 -55.5583,131.09 -55.5583,206.29 0,142.36 72.4373,267.95 182.5433,341.53 -67.262,-2.13 -130.535,-20.59 -185.8519,-51.32 -0.039,1.71 -0.039,3.42 -0.039,5.16 0,198.803 141.441,364.635 329.145,402.342 -34.426,9.375 -70.676,14.395 -108.098,14.395 -26.441,0 -52.145,-2.578 -77.203,-7.364 52.215,163.008 203.75,281.649 383.304,284.946 -140.429,110.062 -317.351,175.66 -509.5972,175.66 -33.1211,0 -65.7851,-1.949 -97.8828,-5.738 181.586,116.4176 397.27,184.359 628.988,184.359 754.732,0 1167.462,-625.238 1167.462,-1167.47 0,-17.79 -0.41,-35.48 -1.2,-53.08 80.1799,-57.86 149.7399,-130.12 204.7499,-212.41" style="fill: white;"></path></svg></span></a></li> <li><a href="http://github.com/laracasts" target="_blank"><span class="icon is-outlined o-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></span></a></li></ul></div> <div class="column is-2 is-offset-1 is-hidden-mobile"><h5 class="heading is-5 in-caps">Learn</h5> <ul class="footer-links-list"><li><a href="https://laracasts.com/lessons">Library</a></li> <li><a href="https://laracasts.com/index">Lesson Index</a></li> <li><a href="https://laracasts.com/shop">Shop</a></li> <li><a href="https://laracasts.com/recommended-reading">Books</a></li> <li><a href="https://laracasts.com/join">Sign Up</a></li> <li><a href="https://laracasts.com/login">
+Sign In
+</a></li></ul></div> <div class="column is-2 is-hidden-mobile"><h5 class="heading is-5 in-caps">Discuss</h5> <ul class="footer-links-list"><li><a href="https://laracasts.com/discuss">Forum</a></li> <li><a href="https://laracasts.com/podcast">Laracasts Snippet</a></li> <li><a href="http://laravelpodcast.com/">Laravel Podcast</a></li> <li><a href="https://laracasts.com/contact">Support</a></li></ul></div> <div class="column is-2 is-hidden-mobile"><h5 class="heading is-5 in-caps">Extras</h5> <ul class="footer-links-list"><li><a href="https://laracasts.com/stats">Statistics</a></li> <li><a href="https://laracasts.com/testimonials">Testimonials</a></li> <li><a href="https://laracasts.com/faq">FAQ</a></li> <li><a href="https://laracasts.com/community?orderBy=updated_at">Community Tutorials</a></li> <li><a href="https://laracasts.com/feed">RSS</a></li> <li><a href="https://larajobs.com/?partner=36#">Get a Job</a></li></ul> <ul class="zeroed footer-links-list"><li><a href="https://laracasts.com/privacy">Privacy</a></li> <li><a href="https://laracasts.com/terms">Terms</a></li></ul></div></div> <div class="columns hosting"><div class="column is-5 is-bold has-text-centered-mobile">
+© Laracasts 2017. All rights reserved. Yes, all of them. That means you, Todd.
+</div> <div class="column is-5 is-offset-2 has-text-right is-bold is-hidden-mobile">
+Proudly hosted with <a href="https://forge.laravel.com/">Laravel Forge</a>
+and <a href="https://www.digitalocean.com/?refcode=d2070a2d5f35">DigitalOcean</a>.
+</div></div></footer></section></div> <div id="user-notifications" class="panel" style="display: none;"><h2 class="panel-heading has-icon"><svg id="icon-alarm" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon"><path d="M0 0h24v24H0V0z" fill="none"></path> <path d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zm8.87-4.19V11c0-3.25-2.25-5.97-5.29-6.69v-.72C13.59 2.71 12.88 2 12 2s-1.59.71-1.59 1.59v.72C7.37 5.03 5.12 7.75 5.12 11v5.82L3 18.94V20h18v-1.06l-2.12-2.12zM16 13.01h-3v3h-2v-3H8V11h3V8h2v3h3v2.01z"></path></svg>
+
+
+        Notifications
+    </h2>  <div class="panel-block p-2"><form method="POST" action="https://laracasts.com/discuss/notifications/mentions" class="has-text-centered"><input type="hidden" name="_method" value="DELETE"> <input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <button type="submit" class="button is-outlined is-primary">
+                Clear All Notifications
+            </button></form></div></div> <div class="modal is-medium"><div class="modal-background"></div> <div class="modal-card"><header class="modal-card-head is-primary"><h4 class="modal-card-title">
+        Welcome Back!
+    </h4> <button class="delete"></button></header> <div class="modal-card-body"><div><form role="form" method="post" action="https://laracasts.com/sessions"><input type="hidden" name="_token" value="0eo2rpNmB5lTvPl0xf6OxSuuCk74EL1R4LwnpYFF"> <div class="control"><input type="email" id="email" name="email" placeholder="Email" required="required" class="input"></div> <div class="control"><input type="password" id="password" name="password" placeholder="Password" required="required" class="input"></div> <button type="submit" class="button is-primary is-submit">
+                Log In
+            </button> <div class="control" style="display: none;"><span class="help is-danger">
+                    
+                </span></div></form></div></div> <footer class="modal-card-foot"><a href="https://laracasts.com/join" class="is-muted in-caps mr-a fs-smaller">
+            Sign Up!
+        </a> <a href="https://laracasts.com/password_resets/create" class="is-muted in-caps fs-smaller">
+            Forgot Your Password?
+        </a></footer></div> <button class="modal-close">Close</button></div></div> 
+<script>!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/algoliasearch.min.js.download"></script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/autocomplete.min.js.download"></script>
+
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+
+    ga('create','UA-44120322-1');
+</script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/jquery.min.js.download"></script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/manifest.js.download"></script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/vendor.js.download"></script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/all.min.js.download"></script>
+<script>
+    ga('send', 'pageview');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': LARACASTS.csrfToken
+        }
+    });
+</script>
+<script>
+    
+    
+    </script>
+<script src="./How to Upload PDF, Doc file using form and send the file to a mail_files/highlight.pack.js.download"></script>
+<script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+
+</body></html>
