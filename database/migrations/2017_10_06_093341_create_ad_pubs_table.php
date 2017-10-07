@@ -16,6 +16,7 @@ class CreateAdPubsTable extends Migration
         Schema::create('ad_pubs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('publisher_id');
+            $table->integer('ad_id');
             $table->string('adlink');
             $table->string('screen_shot_link')->nullable();
             $table->boolean('confirmed')->default(false);

@@ -2,11 +2,17 @@
 
 @section('content')
 <div class="container">
+
     <div class="row">
                   
 @if($adverts)
                    <div class="inner-block">
     <div class="product-block">
+     @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+        @endif  
         <div class="pro-head">
             <h2>Your Published  Ads</h2>
         </div>

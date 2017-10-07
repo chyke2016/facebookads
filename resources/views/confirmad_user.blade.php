@@ -48,9 +48,9 @@
                                   <td>
                                             @if( $user->confirmed == 0 )
                                   
-                                                <span class="badge badge-info"> Not Confirmed</span>
+                                                <span class="label label-warning"> Not Confirmed</span>
                                             @else
-                                                <span class="badge badge-success">Confirmed</span>
+                                                <span class="label label-success">Confirmed</span>
 
                                              @endif
                                    </td>
@@ -66,7 +66,7 @@
                                    <td>
 
                                   @if($user->screen_shot_link == null)
-           <span class="badge badge-info"/> None Uploaded</span>
+           <span class="label label-warning"/> None Uploaded</span>
                                   @else
                       <div class="project-eff">
          <div id="nivo-lightbox-demo"> <p> <a href="/storage/{{$user->screen_shot_link}}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
@@ -90,13 +90,13 @@
                                      </form> 
                                         @endif
                                          </td>
-                                    
+
                                    
                                   <td> 
                                              <form method="POST" action="{{ route('credit_user',$user->publisher_id) }}">
                                     <input type="hidden" name="_token" value="{{ Session::token() }}">
                                       <input type="hidden" value="{{ $user->publisher_id }}" name="credit" />      
-                                     <button type="submit" class="btn btn-info">Credit</button>
+                                     <button type="submit" class="btn btn-success">Credit</button>
 
                                      </form> 
                                          </td>               
